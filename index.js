@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       button.textContent = 'Loading...';
       setTimeout(() => {
         button.textContent = 'Request a Demo';
-        window.location.href = 'demo.html'; // fixed path
+        window.location.href = 'demo.html'; // or your preferred URL
       }, 800);
     });
   });
@@ -43,7 +43,24 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(rotateQuotes, 6000);
   }
 
-  // Handle form submission (for demo.html)
+  // Hamburger menu toggle
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu on link click
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+  }
+
+  // Handle form submission (on demo.html)
   const demoForm = document.querySelector('form');
   if (demoForm) {
     demoForm.addEventListener('submit', function (event) {
